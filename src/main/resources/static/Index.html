@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<script src="main.js"></script>
+<body>
+<h1>Bestilling av kinobilletter</h1>
+
+<form onsubmit="return false" id="billettInput">
+    <label for="velgfilm">Velg film:</label>
+    <select name="velgfilm" id="velgfilm" required>
+        <option value="" hidden>Velg film her</option>
+        <option value="django">Django</option>
+        <option value="interstellar">Interstellar</option>
+        <option value="halloween">Halloween</option>
+    </select><br><br>
+
+    <label for="antall">Antall</label>
+    <input type="number" id="antall" min="1" max="3" required onchange="antallValidering(this.value)"><br><br>
+
+    <table>
+        <tr>
+            <td><label for="fornavn">Fornavn</label></td>
+            <td><input type="text" id="fornavn" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="etternavn">Etternavn</label></td>
+            <td><input type="text" id="etternavn" required><br></td>
+        </tr>
+        <tr>
+            <td><label for="telefonnr">Telefonnr</label></td>
+            <td><input type="tel" id="telefonnr" pattern="[0-9]{8}" required onchange="telefonValidering(this.value)"><br></td>
+        </tr>
+        <tr>
+            <td><label for="epost">Epost</label></td>
+            <td><input type="email" id="epost" required onchange="epostValidering(this.value)"><br></td>
+        </tr>
+    </table>
+    <input type="submit" onclick="lagreBilletter()">
+</form>
+
+<h2>Alle billetter</h2>
+
+<p id="utskrift"></p>
+<br>
+<button onclick="slettBilletter()">Slett alle billettene</button>
+</body>
+</html>
